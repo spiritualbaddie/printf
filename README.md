@@ -1,1 +1,2 @@
-group project on the printf function
+# Printf project readme
+This is a group project
