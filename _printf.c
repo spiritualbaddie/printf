@@ -96,7 +96,9 @@ int _putstr(char *str)
 	int i, out;
 
 	for (i = 0; str && *(str + i) != 0; i++)
+	{
 		out = _putchar(*(str + i));
+	}
 	return (out);
 }
 
