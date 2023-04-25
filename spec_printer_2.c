@@ -20,7 +20,7 @@ void convert_fmt_b(va_list *args_list, fmt_info_t *fmt_info)
 		tmp = num;
 		for (i = 0; i < size && tmp > 0; i++, len++)
 		{
-			(str + i) = (tmp % 2) + '0';
+			*(str + i) = (tmp % 2) + '0';
 			tmp /= 2;
 		}
 		if (!fmt_info->left)

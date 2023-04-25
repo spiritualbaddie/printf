@@ -61,8 +61,8 @@ void convert_fmt_s(va_list *args_list, fmt_info_t *fmt_info)
  * @args_list: The arguments list
  * @fmt_info: The format info
  */
-void convert_fmt_percent(va_list *args_list, fmt_info_t *fmt_info)
+void convert_fmt_percent(va_list *arg_list, fmt_info_t *fmt_info)
 {
-	(void)argv_list;
+	(void)arg_list;
 	_putchar(fmt_info->spec);
 }
