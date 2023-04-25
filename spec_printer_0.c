@@ -10,20 +10,20 @@
  */
 void convert_fmt_c(va_list *args_list, fmt_info_t *fmt_info)
 {
-        int i, len = 1;
-        char str = va_arg(*args_list, int);
+	int i, len = 1;
+	char str = va_arg(*args_list, int);
 
-        if (!fmt_info->left)
-        {
-                for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
-                        _putchar(' ');
-        }
-        _putchar(str);
-        if (fmt_info->left)
-        {
-                for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
-                        _putchar(' ');
-        }
+	if (!fmt_info->left)
+	{
+		for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
+			_putchar(' ');
+	}
+		_putchar(str);
+		if (fmt_info->left)
+	{
+		for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
+		_putchar(' ');
+	}
 }
 
 
@@ -34,25 +34,25 @@ void convert_fmt_c(va_list *args_list, fmt_info_t *fmt_info)
  */
 void convert_fmt_s(va_list *args_list, fmt_info_t *fmt_info)
 {
-        int i, len;
-        char *str = va_arg(*args_list, char *);
-        char null_str[] = "(null)";
+	int i, len;
+	char *str = va_arg(*args_list, char *);
+	char null_str[] = "(null)";
 
-        str = str ? str : null_str;
-        len = fmt_info->is_precision_set && fmt_info->prec >= 0
-                ? fmt_info->prec : str_len(str);
-        if (!fmt_info->left)
-        {
-                for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
-                        _putchar(' ');
-        }
-        for (i = 0; i < len && *(str + i) != '\0'; i++)
-                _putchar(*(str + i));
-        if (fmt_info->left)
-        {
-                for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
-                        _putchar(' ');
-        }
+	str = str ? str : null_str;
+	len = fmt_info->is_precision_set && fmt_info->prec >= 0
+	? fmt_info->prec : str_len(str);
+	if (!fmt_info->left)
+	{
+		for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
+			_putchar(' ');
+	}
+	for (i = 0; i < len && *(str + i) != '\0'; i++)
+	_putchar(*(str + i));
+	if (fmt_info->left)
+	{
+		for (i = 0; i < MAX(len, fmt_info->width) - len; i++)
+		_putchar(' ');
+	}
 }
 
 
@@ -63,6 +63,6 @@ void convert_fmt_s(va_list *args_list, fmt_info_t *fmt_info)
  */
 void convert_fmt_percent(va_list *args_list, fmt_info_t *fmt_info)
 {
-        (void)args_list;
-        _putchar(fmt_info->spec);
+	(void)argv_list;
+	_putchar(fmt_info->spec);
 }
