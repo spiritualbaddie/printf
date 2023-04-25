@@ -29,10 +29,10 @@ void convert_fmt_b(va_list *args_list, fmt_info_t *fmt_info)
 				_putchar(fmt_info->pad);
 		}
 		for (i = size - 1; i >= 0; i--)
-			{
-				if (*(str + i) != '\0')
-					_putchar(*(str + i));
-			}
+		{
+			if (*(str + i) != '\0')
+				_putchar(*(str + i));
+		}
 		if (num == 0)
 			_putchar('0');
 		if (fmt_info->left)
