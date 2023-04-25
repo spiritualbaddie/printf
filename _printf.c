@@ -54,21 +54,28 @@ void write_format(va_list *args_list, fmt_info_t *fmt_info)
 {
 	int i;
 	spec_printer_t spec_printers[] = {
-		{'%', convert_fmt_percent},
-		{'p', convert_fmt_p},
+		/* task 0 */
 		{'c', convert_fmt_c},
 		{'s', convert_fmt_s},
+		{'%', convert_fmt_percent},
+		/* task 1 */
 		{'d', convert_fmt_di},
 		{'i', convert_fmt_di},
+		/* tas 2 */
+		{'b', convert_fmt_b},
+		/* task 3 */
 		{'X', convert_fmt_xX},
 		{'x', convert_fmt_xX},
 		{'o', convert_fmt_o},
 		{'u', convert_fmt_u},
-		/* #begin custom specifiers */
-		{'b', convert_fmt_b},
-		{'R', convert_fmt_R},
-		{'r', convert_fmt_r},
+		/* task 5 */
 		{'S', convert_fmt_S},
+		/* task 6 */
+		{'p', convert_fmt_p},
+		/* task 13 */
+		{'r', convert_fmt_r},
+		/* task 14 */
+		{'R', convert_fmt_R},
 		/* #end */
 		{'F', convert_fmt_fF},
 		{'f', convert_fmt_fF},
