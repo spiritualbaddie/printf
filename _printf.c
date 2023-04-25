@@ -13,22 +13,20 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, tmp, escape_process = FALSE, error = 1, last_token;
+	int i = 0, tmp, processing_escape = FALSE, error = 1, last_token;
 	fmt_info_t fmt_info;
 	va_list args;
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
-	{
 		return (-1);
-	}
 	va_start(args, format);
-	print_to_buffer(0, -1);
+	write_to_buffer(0, -1);
 	for (i = 0; format && *(format + i) != '\0'; i++)
 	{
-		if (escape_process)
+		if (processing_escape)
 		{
-			tmp = read_format(format + i, args, &fmt_info, &last_token);
-			escape_process = FALSE;
+			tmp = read_format_info(format + i, args, &fmt_info, &last_token);
+			processing_escape = FALSE;
 			set_format_error(format, &i, tmp, last_token, &error);
 			if (is_specifier(fmt_info.spec))
 				write_format(&args, &fmt_info);
@@ -37,14 +35,14 @@ int _printf(const char *format, ...)
 		else
 		{
 			if (*(format + i) == '%')
-				escape_process = TRUE;
+				processing_escape = TRUE;
 			else
 				_putchar(*(format + i));
 		}
 	}
-	print_to_buffer(0, 1);
+	write_to_buffer(0, 1);
 	va_end(args);
-	return (error <= 0 ? error : print_to_buffer('\0', -2));
+	return (error <= 0 ? error : write_to_buffer('\0', -2));
 }
 
 /**
@@ -111,11 +109,11 @@ int _putstr(char *str)
  */
 int _putchar(char c)
 {
-	return (print_to_buffer(c, 0));
+	return (write_to_buffer(c, 0));
 }
 
 /**
- * print_to_buffer - Writes a char to the buffer based on an action code
+ * write_to_buffer - Writes a char to the buffer based on an action code
  * @c: The character to write
  * @action: The action to perform (
  * -1-> reset the static variables
@@ -126,7 +124,7 @@ int _putchar(char c)
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-int print_to_buffer(char c, char action)
+int write_to_buffer(char c, char action)
 {
 	static int i;
 	static int chars_count;

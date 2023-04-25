@@ -95,7 +95,7 @@ typedef struct float_info float_info_t;
 
 int _putchar(char c);
 int _putstr(char *str);
-int print_to_buffer(char c, char action);
+int write_to_buffer(char c, char action);
 int _printf(const char *format, ...);
 void write_format(va_list *args_list, fmt_info_t *fmt_info);
 
@@ -118,7 +118,7 @@ void set_length(char cur, int *pos, fmt_info_t *fmt_info);
 int set_flags(const char *str, fmt_info_t *fmt_info);
 void set_precision(const char *str, va_list args,
 	fmt_info_t *fmt_info, int *i, int *error_status);
-int read_format(const char *, va_list, fmt_info_t *, int *);
+int read_format_info(const char *, va_list, fmt_info_t *, int *);
 
 
 void convert_fmt_percent(va_list *args_list, fmt_info_t *fmt_info);
